@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="90be2c12-782a-45cc-b571-dc9de7be939e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/datech.iml" afterPath="$PROJECT_DIR$/.idea/datech.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/themes/datech/css/style.css" afterPath="$PROJECT_DIR$/sites/all/themes/datech/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/themes/datech/less/overrides.less" afterPath="$PROJECT_DIR$/sites/all/themes/datech/less/overrides.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/themes/datech/templates/page--front.tpl.php" afterPath="$PROJECT_DIR$/sites/all/themes/datech/templates/page--front.tpl.php" />
-    </list>
+    <list default="true" id="90be2c12-782a-45cc-b571-dc9de7be939e" name="Default" comment="" />
     <ignored path="datech.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -35,8 +28,8 @@
       <file leaf-file-name="settings.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sites/default/settings.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="254" column="32" selection-start-line="254" selection-start-column="32" selection-end-line="254" selection-end-column="32" />
+            <state relative-caret-position="532">
+              <caret line="262" column="3" selection-start-line="262" selection-start-column="3" selection-end-line="262" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -434,12 +427,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1468229728364</updated>
-      <workItem from="1468229729554" duration="16048000" />
+      <workItem from="1468229729554" duration="16104000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16048000" />
+    <option name="totallyTimeSpent" value="16104000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
@@ -554,8 +547,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sites/default/settings.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="254" column="32" selection-start-line="254" selection-start-column="32" selection-end-line="254" selection-end-column="32" />
+        <state relative-caret-position="532">
+          <caret line="262" column="3" selection-start-line="262" selection-start-column="3" selection-end-line="262" selection-end-column="3" />
           <folding />
         </state>
       </provider>
