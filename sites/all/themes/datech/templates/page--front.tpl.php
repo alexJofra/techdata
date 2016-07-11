@@ -8,7 +8,7 @@
 
 <div id="fullpage">
   <div class="section active" id="section1">
-    <div class="slide">
+    <div class="slide first-page">
       <div class="intro">
 
       </div>
@@ -21,7 +21,20 @@
         </div>
       </div>
     </div>
-    <div class="slide">
+    <div class="slide second-page">
+      <div class="intro">
+        
+      </div>
+      <div class="footer">
+        <div class="left">
+          <div class="arrow-box"></div>
+        </div>
+        <div class="right">
+          <div class="arrow-box"></div>
+        </div>
+      </div>
+    </div>
+    <div class="slide third-page">
       <div class="intro">
 
       </div>
@@ -34,7 +47,7 @@
         </div>
       </div>
     </div>
-    <div class="slide">
+    <div class="slide fourth-page">
       <div class="intro">
 
       </div>
@@ -47,20 +60,7 @@
         </div>
       </div>
     </div>
-    <div class="slide">
-      <div class="intro">
-
-      </div>
-      <div class="footer">
-        <div class="left">
-          <div class="arrow-box"></div>
-        </div>
-        <div class="right">
-          <div class="arrow-box"></div>
-        </div>
-      </div>
-    </div>
-    <div class="slide">
+    <div class="slide fifth-page">
       <div class="intro">
 
       </div>

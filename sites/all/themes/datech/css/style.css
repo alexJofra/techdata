@@ -7520,7 +7520,10 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
 #menu {
   position: absolute;
 }
-.section {
+.section .slide.first-page,
+.section .slide.second-page,
+.section .slide.third-page,
+.section .slide.fifth-page {
   background-color: #818588;
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1, startColorstr=#818588, endColorstr=#cdcdcd);
   background-image: -moz-linear-gradient(right, #818588 0%, #cdcdcd 100%);
@@ -7529,6 +7532,22 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   background-image: linear-gradient(right, #818588 0%, #cdcdcd 100%);
   background-image: -o-linear-gradient(right, #818588 0%, #cdcdcd 100%);
   background-image: -webkit-gradient(linear, right bottom, left bottom, color-stop(0%, #818588), color-stop(100%, #cdcdcd));
+}
+.section .slide.first-page .intro {
+  background-image: url('../images/background01.png');
+  background-size: cover;
+}
+.section .slide.second-page {
+  background-image: url('../images/background02.png');
+  background-size: cover;
+}
+.section .slide.third-page .intro {
+  background-image: url('../images/background01.png');
+  background-size: cover;
+}
+.section .slide.fourth-page {
+  background-image: url('../images/background04.png');
+  background-size: cover;
 }
 .section .intro {
   height: 77%;
