@@ -1,0 +1,271 @@
+<?php
+
+/**
+ * @file
+ * pageflow_ui.module
+ *
+ * An administration based module for creating theme agnostic
+ * single page workflows.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function pageflow_ui_theme() {
+  return array(
+    'pageflow_ui_page_form' => array(
+      'render element' => 'form',
+      'file' => 'theme/pageflow_ui_theme.inc',
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function pageflow_ui_menu() {
+  $items['admin/structure/pageflow'] = array(
+    'title' => 'Pageflow',
+    'description' => 'Pageflow dashboard',
+    'page callback' => 'pageflow_ui_dashboard',
+    'access arguments' => array('administer pageflow'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'pageflow_ui.admin.inc',
+  );
+  $items['admin/structure/pageflow/page/add'] = array(
+    'title' => 'Add pageflow page',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('pageflow_ui_add_page_form'),
+    'access arguments' => array('administer pageflow'),
+    'type' => MENU_LOCAL_ACTION,
+    'file' => 'pageflow_ui.admin.inc',
+  );
+  $items['admin/config/system/pageflow'] = array(
+    'title' => 'Pageflow',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('pageflow_ui_settings_form'),
+    'access arguments' => array('administer pageflow'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  // @todo, World ain't ready for you yet.
+  /*$items['admin/structure/pageflow/orphan'] = array(
+    'title' => 'Orphan Page',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('pageflow_ui_orphan_table_form'),
+    'access arguments' => array('administer pageflow'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'pageflow_ui.admin.inc',
+  );*/
+
+  return $items;
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function pageflow_ui_menu_alter(&$items) {
+  $items['admin/structure/pageflow/add']['title'] = 'Add pageflow';
+}
+
+/**
+ * Pageflow settings form.
+ */
+function pageflow_ui_settings_form($form, $form_state) {
+  $form['settings'] = array(
+    '#type' => 'container'
+  );
+  $form['settings']['pageflow_redirect'] = array(
+    '#type' => 'select',
+    '#title' => t('Redirect paths'),
+    '#options' => array(
+      TRUE => t('Yes'),
+      FALSE => t('No')
+    ),
+    '#description' => t('Redirect all Pageflow page paths to parent Pageflow.'),
+    '#default_value' => variable_get('pageflow_redirect', TRUE)
+  );
+
+  return system_settings_form($form);
+}
+
+/**
+ * Returns a formatted list of options.
+ */
+function pageflow_ui_return_pageflow_list() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'pageflow');
+  $result = $query->execute();
+
+  $options = array();
+  foreach ($result['pageflow'] as $value) {
+    $pageflow = pageflow_load($value->pfid);
+    $options[$pageflow->pfid] = $pageflow->title;
+  }
+
+  return $options;
+}
+
+/**
+ * Find all orpahn pages.
+ */
+function pageflow_ui_find_orphans() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'pageflow');
+  $results = $query->execute();
+
+  if ($results) {
+    foreach ($results['pageflow'] as $pageflow) {
+      $pfid[] = $pageflow->pfid;
+    }
+
+    $query = db_select('pageflow_page', 'p')->fields('p');
+    $query->condition('p.pfid', $pfid, 'NOT IN');
+
+    return $query->execute()->fetchAll(PDO::FETCH_ASSOC);
+  }
+}
+
+/**
+ * Load pageflow page
+ *
+ * @param int or array $pfids
+ *  Pageflow id(s).
+ *
+ * @param int or array $pfpids
+ *  Pageflow page id(s).
+ *
+ * @param int $limit
+ *  Query limit.
+ */
+function pageflow_ui_load_page($pfids = FALSE, $pfpids = FALSE, $limit = 0) {
+  $query = db_select('pageflow_page', 'p');
+
+  if ($pfids) {
+    $query->condition('p.pfid', $pfids, is_array($pfids) ? 'IN' : '=');
+  }
+  if ($pfpids) {
+    $query->condition('p.pfpid', $pfpids, is_array($pfpids) ? 'IN' : '=');
+  }
+
+  $query->fields('p', array('pfpid', 'title', 'path', 'weight', 'pfid', 'redirect', 'regions'))
+    ->orderBy('weight', 'ASC');
+
+  if (!empty($limit)) {
+    $query->range(0, $limit);
+  }
+
+  return $query->execute()->fetchAll(PDO::FETCH_ASSOC);
+}
+
+/**
+ * Insert pageflow page
+ */
+function pageflow_ui_insert_page($values) {
+  $return = FALSE;
+
+  try {
+    $return = db_insert('pageflow_page')
+      ->fields(array(
+        'title' => $values['title'],
+        'path' => $values['path'],
+        'pfid' => $values['pfid'],
+        'redirect' => $values['redirect'],
+        'regions' => serialize($values['regions']),
+      ))
+      ->execute();
+  }
+  catch (Exception $e) {
+    watchdog('pageflow_ui', 'db_insert failed with the error message: @message, & query: @query', array(
+      '@message' => $e->getMessage(),
+      '@query' => $e->query_string,
+    ), WATCHDOG_ERROR);
+  }
+
+  return $return;
+}
+
+/**
+ * Update pageflow page
+ */
+function pageflow_ui_update_page($values) {
+  $return = FALSE;
+
+  try {  
+    $return = db_update('pageflow_page')
+      ->fields(array(
+        'title' => $values['title'],
+        'path' => $values['path'],
+        'pfid' => $values['pfid'],
+        'redirect' => $values['redirect'],
+        'regions' => serialize($values['regions']),
+      ))
+      ->condition('pfpid', $values['pfpid'], '=')
+      ->execute();
+  }
+  catch (Exception $e) {
+    watchdog('pageflow_ui', 'db_update failed with the error message: @message, & query: @query', array(
+      '@message' => $e->getMessage(),
+      '@query' => $e->query_string,
+    ), WATCHDOG_ERROR);
+  }
+
+  return $return;
+}
+
+/**
+ * Delete Pageflow page
+ */
+function pageflow_ui_delete_pageflow_page($pfpid) {
+  db_delete('pageflow_page')
+    ->condition('pfpid', $pfpid)
+    ->execute();
+}
+
+/**
+ * Pageflow enable page(s).
+ *
+ * @param array/int $pfpid
+ * @param int $pfid
+ */
+function pageflow_ui_enable_page($pfpids, $pfid) {
+  foreach ($pfpids as $pfpid) {
+    $result = db_update('pageflow_page')
+      ->fields(array(
+        'pfid' => $pfid,
+      ))
+      ->condition('pfpid', $pfpid, '=')
+      ->execute();
+  }
+}
+
+/**
+ * Pageflow disable page(s).
+ *
+ * @param array/int $pfpid
+ */
+function pageflow_ui_disable_page($pfpids) {
+  foreach ($pfpids as $pfpid) {
+    $result = db_update('pageflow_page')
+      ->fields(array(
+        'pfid' => 0,
+      ))
+      ->condition('pfpid', $pfpid, '=')
+      ->execute();
+  }
+}
+
+/**
+ * Helper function, create HTML selector from string.
+ */
+function pageflow_selector($string, $type) {
+  $result = FALSE;
+
+  if ($type == 'class') {
+    $result = '.' . $string;
+  }
+  elseif ($type == 'id') {
+    $result = '#' . $string;
+  }
+
+  return $result;
+}

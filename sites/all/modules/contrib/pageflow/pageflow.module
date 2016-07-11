@@ -1,0 +1,515 @@
+<?php
+
+/**
+ * @file
+ * pageflow.module
+ *
+ * Theme agnostic single page workflow development tool.
+ */
+
+/**
+ * Implements hook_init().
+ */
+function pageflow_init() {
+  // Declare all inbound paths.
+  $settings = array(
+    'pageflow' => array(
+      'settings' => array(
+        'paths' => pageflow_inbound_paths()
+      )
+    )
+  );
+
+  // Declare all menu selectors.
+  $navigation = pageflow_load_settings();
+  foreach ($navigation as $selector) {
+    $settings['pageflow'][$selector->pfid]['navigation'] = array(
+      'selector' => $selector->menu_selector
+    );
+  }
+
+  // Expose JavaScript settings.
+  drupal_add_js($settings, 'setting');
+  drupal_add_js(drupal_get_path('module', 'pageflow') . '/includes/js/pageflow.js');
+
+  // Exclude Pageflow page from direct access.
+  if (variable_get('pageflow_redirect', TRUE)) {
+    pageflow_parse_redirect(current_path());
+  }
+}
+
+/**
+ * Handles path redirection for Pageflow pages.
+ */
+function pageflow_parse_redirect($request) {
+  if ($paths = pageflow_set_redirect($request)) {
+    global $base_url;
+
+    // Build new request.
+    $url = array(
+      'fragment' => $paths['path'],
+      'base_url' => $base_url,
+      'absolute' => FALSE,
+      'external' => FALSE,
+    );
+
+    // Set headers.
+    drupal_add_http_header('Location', url($paths['dest'], $url));
+    drupal_add_http_header('Status', '301 Moved Permanently');
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function pageflow_theme() {
+  return array(
+    'pageflow' => array(
+      'variables' => array(
+        'pfid' => NULL,
+        'content' => NULL,
+        'settings' => array(),
+      ),
+      'file' => 'theme/pageflow.theme.inc',
+    ),
+    'pageflow_page' => array(
+      'variables' => array(
+        'content' => array(),
+      ),
+      'file' => 'theme/pageflow.theme.inc',
+    ),
+    'pageflow_wrapper' => array(
+      'variables' => array('output' => array()),
+      'file' => 'theme/pageflow.theme.inc',
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function pageflow_menu() {
+  $items = array();
+
+  $items['pageflow/%pageflow'] = array(
+    'title' => 'Pageflow',
+    'page callback' => 'pageflow_deliver_pageflow',
+    'page arguments' => array(1),
+    'access callback' => 'pageflow_access_menu_callback',
+    'access arguments' => array('view', 1),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  $items['admin/structure/pageflow'] = array(
+    'title' => 'Pageflow',
+    'access arguments' => array('administer pageflow entities'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function pageflow_permission() {
+  return array(
+    'administer pageflow entities' => array(
+      'title' => t('Administer Pageflow Entities'),
+      'description' => t('Allows a user to administer pageflow entities'),
+    ),
+    'view pageflow entities' => array(
+      'title' => t('View Pageflow Entity'),
+      'description' => t('Allows a user to view the pageflow entities.'),
+    ),
+    'create pageflow entities' => array(
+      'title' => t('Create Pageflow Entities'),
+      'description' => t('Allows a user to create pageflow entities.'),
+    ),
+    'edit pageflow entities' => array(
+      'title' => t('Edit Pageflow Entities'),
+      'description' => t('Allows a user to edit pageflow entities.'),
+    ),
+    'delete pageflow entities' => array(
+      'title' => t('Delete Pageflow Entities'),
+      'description' => t('Allows a user to delete pageflow entities.'),
+    )
+  );
+}
+
+/**
+ * Permission menu callback.
+ */
+function pageflow_access_menu_callback($op, $pageflow = NULL, $account = NULL) {
+  switch ($op) {
+    case 'view':
+      return user_access('view pageflow entities', $account);
+
+    case 'create':
+      return user_access('create pageflow entities', $account);
+
+    case 'update':
+      return user_access('edit pageflow entities', $account);
+
+    case 'delete':
+      return user_access('delete pageflow entities', $account);
+  }
+
+  return FALSE;
+}
+
+/**
+ * Pageflow access callback.
+ */
+function pageflow_access_callback() {
+  $result = FALSE;
+  if (user_access('administer pageflow entities')) {
+    $result = TRUE;
+  }
+
+  return $result;
+}
+
+/**
+ * Pageflow menu callback.
+ *
+ * @param object $pageflow
+ *    Pageflow object.
+ */
+function pageflow_deliver_pageflow($pageflow) {
+  // Load pageflow pages.
+  $pageflow_pages = pageflow_load_pages($pageflow->pfid);
+
+  $pages = array();
+  foreach ($pageflow_pages as $pageflow_page) {
+    // Find internal path.
+    $path = drupal_get_normal_path($pageflow_page->path);
+
+    // Load the page path content.
+    menu_set_active_item($path);
+    $page_callback_result = menu_execute_active_handler($path, FALSE);
+
+    // @includes/common.inc drupal_add_region_content().
+    drupal_set_page_content($page_callback_result);
+    $pages[$pageflow_page->pfpid] = element_info('page');
+
+    // As per normal page render, populate the regions.
+    foreach (module_implements('page_build') as $module) {
+      $function = $module . '_page_build';
+      $function($pages[$pageflow_page->pfpid]);
+    }
+
+    // Provide additional alter for pageflow logic.
+    drupal_alter('pageflow_region', $pages[$pageflow_page->pfpid], $pageflow_page);
+
+    // Expected page alter.
+    drupal_alter('page', $pages[$pageflow_page->pfpid]);
+
+    // Include future attributes.
+    $pages[$pageflow_page->pfpid]['pfpid'] = $pageflow_page->pfpid;
+    $pages[$pageflow_page->pfpid]['data'] = $pageflow_page->path;
+
+    // Pageflow title.
+    $pages[$pageflow_page->pfpid]['title'] = $pageflow->title;
+  }
+
+  print pageflow_render_pageflow($pages, $pageflow);
+}
+
+/**
+ * Render function for pageflow pages.
+ *
+ * @param array $pages
+ *    Array of pages to render.
+ * @param object $pageflow
+ *    Pageflow object.
+ */
+function pageflow_render_pageflow($pages, $pageflow) {
+  $output = array(
+    '#pfid' => $pageflow->pfid,
+    '#content' => $pages,
+    '#settings' => array(
+      'navigation' => array(
+        'selector' => $pageflow->menu_selector ? $pageflow->menu_selector : '#block-system-main-menu .menu',
+        'orientation' => $pageflow->orientation ? $pageflow->orientation : 'vertical',
+        'animation_speed' => $pageflow->animation_speed ? $pageflow->animation_speed : 550,
+      ),
+    ),
+    '#type' => 'page',
+    '#theme' => 'pageflow',
+    '#theme_wrappers' => array(
+      'html'
+    ),
+  );
+
+  // Pre render alter.
+  drupal_alter('pageflow_pre_render', $output, $pageflow->pfid);
+
+  return drupal_render($output);
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function pageflow_preprocess_page(&$variables) {
+  if (isset($variables['page']['pfpid'])) {
+    // Remove breadcrumbs.
+    drupal_set_breadcrumb(array());
+
+    // @todo, local tasks.
+    $variables['tabs'] = '';
+
+    // Set pageflow title.
+    // @todo, allow per pageflow page title?
+    drupal_set_title($variables['page']['title']);
+  }
+}
+
+/**
+ * Implements hook_pageflow_region_alter().
+ */
+function pageflow_pageflow_region_alter(&$page, $pageflow) {
+  unset($page['#type']);
+  unset($page['#theme_wrappers']);
+
+  // Remove selected regions from render.
+  $regions = unserialize($pageflow->regions);
+  foreach ($regions as $name => $region) {
+    if (!$region) {
+      unset($page[$name]);
+    }
+  }
+}
+
+/**
+ * Implements hook_html_head_alter().
+ */
+function pageflow_html_head_alter(&$head_elements) {
+  $tag = array();
+  $index = 0;
+
+  // Remove duplicate header tags, ahhhh =(.
+  foreach ($head_elements as $name => $values) {
+    if (strpos($name, 'drupal_add_html_head_link') !== false) {
+      $tags = explode(':', $name);
+      
+      if ($tags[1] == 'canonical' || $tags[1] == 'shortlink') {
+        $index++;
+
+        if ($index > 2) {
+          unset($head_elements[$name]);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_info().
+ */
+function pageflow_entity_info() {
+  $entity['pageflow'] = array(
+    'label' => t('Pageflow'),
+    'label callback' => 'pageflow_label_callback',
+    'entity class' => 'Entity',
+    'controller class' => 'PageflowController',
+    'base table' => 'pageflow',
+    'uri callback' => 'pageflow_uri',
+    'fieldable' => TRUE,
+    'entity keys' => array(
+      'id' => 'pfid',
+    ),
+    'uri callback' => 'entity_class_uri',
+    'load hook' => 'pageflow_load',
+    'static cache' => TRUE,
+    'admin ui' => array(
+      'path' => 'admin/structure/pageflow',
+      'file' => 'includes/pageflow.admin.inc',
+    ),
+    'module' => 'pageflow',
+    'access callback' => 'pageflow_access_callback',
+    'bundles' => array(
+      'pageflow' => array(
+        'label' => 'Pageflow',
+        'admin' => array(
+          'path' => 'admin/structure/pageflow/manage',
+          'access arguments' => array('administer pageflow'),
+        ),
+      ),
+    ),
+    'views controller class' => 'EntityDefaultViewsController',
+  );
+
+  return $entity;
+}
+
+/**
+ * Pageflow label callback.
+ */
+function pageflow_label_callback($pageflow, $type) {
+  return empty($pageflow->title) ? 'Empty' : $pageflow->title;
+}
+
+/**
+ * Saves Pageflow to database.
+ */
+function pageflow_save(pageflow $pageflow) {
+  return $pageflow->save();
+}
+
+/**
+ * Load pageflow entity.
+ */
+function pageflow_load($pfid = array(), $reset = FALSE) {
+  $pageflow = pageflow_load_multiple(array($pfid), array(), $reset);
+
+  return reset($pageflow);
+}
+
+/**
+ * Load multiple pageflow entities.
+ */
+function pageflow_load_multiple($pfids = array(), $conditions = array(), $reset = FALSE) {
+  return entity_load('pageflow', $pfids, $conditions, $reset);
+}
+
+/**
+ * Deletes a pageflow.
+ */
+function pageflow_delete(pageflow $pageflow) {
+  $pageflow->delete();
+}
+
+/**
+ * Delete multiple pageflow entities.
+ */
+function pageflow_delete_multiple(array $pfids) {
+  entity_get_controller('pageflow')->delete($pfids);
+}
+
+/**
+ * Pageflow custom entity class.
+ */
+class Pageflow extends Entity {
+
+ /**
+  * Override defaultUri().
+  */
+  protected function defaultUri() {
+    return array('path' => 'pageflow/' . $this->identifier());
+  }
+}
+
+/**
+ * Custom controller for the pageflow entity.
+ */
+class PageflowController extends EntityAPIController {
+
+  /**
+   * Override the save method.
+   */
+  public function save($entity, DatabaseTransaction $transaction = NULL) {
+    if (isset($entity->is_new)) {
+      $entity->created = REQUEST_TIME;
+    }
+
+    $entity->changed = REQUEST_TIME;
+    return parent::save($entity, $transaction);
+  }
+}
+
+/**
+ * Redirect single page path to parent.
+ */
+function pageflow_set_redirect($current_path) {
+  $static = FALSE;
+
+  if ($cache = cache_get('pageflow_path_' . $current_path, 'cache_pageflow')) {
+    $static = array(
+      'path' => drupal_get_path_alias($current_path),
+      'dest' => $cache->data,
+    );  
+  }
+  else {
+    $paths = pageflow_load_paths();
+    foreach ($paths as $path => $dest) {
+      if ($current_path == drupal_get_normal_path($path)) {
+        $static = array(
+          'path' => $path,
+          'dest' => $dest,
+        );
+
+        cache_set('pageflow_path_' . $current_path, $dest, 'cache_pageflow');
+      }
+    }
+  }
+
+  return $static;
+}
+
+/**
+ * Load navigation settings.
+ */
+function pageflow_load_settings() {
+  $results = &drupal_static(__FUNCTION__);
+
+  if (!isset($results)) {
+    $query = db_query('SELECT pfid, menu_selector FROM {pageflow}');
+    $results = $query->fetchAllAssoc('pfid');
+  }
+
+  return $results;
+}
+
+/**
+ * Return static array of single page paths.
+ *
+ * @todo, clear.
+ */
+function pageflow_inbound_paths() {
+  $results = &drupal_static(__FUNCTION__);
+
+  if (!isset($results)) {
+    $results = pageflow_load_paths();
+  }
+
+  return $results;
+}
+
+/**
+ * Load all associated Pageflow pages.
+ *
+ * @param int $pf_id
+ *    Pageflow id.
+ */
+function pageflow_load_pages($pfid) {
+  $result = db_query('SELECT pp.pfpid, pp.path, pp.weight, pp.regions FROM {pageflow_page} AS pp 
+    LEFT JOIN {pageflow} AS p ON pp.pfid = p.pfid
+    WHERE p.pfid = :pfid
+    ORDER BY pp.weight ASC', array(':pfid' => $pfid));
+
+  return $result->fetchAll();
+}
+
+/**
+ * Load pageflow path alias list.
+ */
+function pageflow_load_paths() {
+  $paths = array();
+
+  // Load Pageflow page paths.
+  $result = db_query('SELECT pfid, path FROM {pageflow_page}
+    WHERE redirect = 1');
+  $pages = $result->fetchAll();
+
+  // Format path list.
+  foreach($pages as $page) {
+    // @todo, Support language param.
+    $alias = drupal_get_path_alias('pageflow/' . $page->pfid);
+
+    // Rebuild the list.
+    $paths[$page->path] = $alias;
+  }
+
+  return $paths;
+}

@@ -1,0 +1,135 @@
+<?php
+
+/**
+ * @file
+ * pageflow.install
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function pageflow_schema() {
+  $schema['pageflow'] = array(
+    'description' => 'Manages Pageflows.',
+    'fields' => array(
+      'pfid' => array(
+        'description' => 'Identifier.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'title' => array(
+        'description' => 'Defines the Pageflow by name.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'menu_selector' => array(
+        'description' => 'Defines the Pageflow main menu selector.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '#block-system-main-menu .menu',
+      ),
+      'orientation' => array(
+        'description' => 'Defines the Pageflow orientation.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => 'vertical',
+      ),
+      'animation_speed' => array(
+        'description' => 'Defines the pageflow animation speed.',
+        'type' => 'int',
+        'length' => 11,
+        'not null' => TRUE,
+        'default' => 550,
+      ),
+      'created' => array(
+        'description' => 'Created timestamp',
+        'type' => 'int',
+        'not null' => FALSE,
+      ),
+      'changed' => array(
+        'description' => 'Changed timestamp',
+        'type' => 'int',
+        'not null' => FALSE,
+      ),
+    ),
+    'primary key' => array('pfid'),
+  );
+  $schema['pageflow_page'] = array(
+    'description' => 'Manages Pageflow pages.',
+    'fields' => array(
+      'pfpid' => array(
+        'description' => 'Identifier.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'pfid' => array(
+        'description' => 'Identifies the Pageflow group.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'title' => array(
+        'description' => 'Defines the Pageflow page by name.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'path' => array(
+        'description' => 'Defines the Pageflow page menu path.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'redirect' => array(
+        'description' => 'Redirect to Pageflow path.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 1,
+      ),
+      'weight' => array(
+        'description' => 'Defines the order pages are rendered in.',
+        'type' => 'int',
+        'length' => 11,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'regions' => array(
+        'description' => 'Holds active page regions',
+        'type' => 'blob',
+      ),
+    ),
+    'foreign keys' => array(
+      'pageflow' => array(
+        'table' => 'pageflow',
+        'columns' => array('pfid' => 'pfid'),
+      ),
+    ),
+    'primary key' => array('pfpid'),
+  );
+
+  $schema['cache_pageflow'] = drupal_get_schema_unprocessed('system', 'cache');
+  $schema['cache_pageflow']['description'] = 'Pageflow path & page cache.';
+
+  return $schema;
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function pageflow_uninstall() {
+  // Common.
+  drupal_uninstall_schema('pageflow');
+  drupal_uninstall_schema('pageflow_page');
+
+  // Cache.
+  drupal_uninstall_schema('cache_pageflow');
+}

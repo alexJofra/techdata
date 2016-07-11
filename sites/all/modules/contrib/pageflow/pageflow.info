@@ -1,0 +1,14 @@
+name = Pageflow
+description = "Provides page management"
+core = 7.x
+package = Pageflow
+
+dependencies[] = entity
+
+
+; Information added by Drupal.org packaging script on 2014-08-23
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "pageflow"
+datestamp = "1408759429"
+

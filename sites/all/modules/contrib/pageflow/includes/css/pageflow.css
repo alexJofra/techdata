@@ -1,0 +1,23 @@
+
+/**
+ * @file
+ * pageflow.css
+ */
+
+/* Common */
+.fixed {
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+}
+.fixed.top {
+  top: 0;
+}
+.fixed.bottom {
+  bottom: 0;
+}
+
+/* Page */
+.pageflow-page {
+  position: relative;
+}
