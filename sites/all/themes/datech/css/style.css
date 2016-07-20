@@ -7540,6 +7540,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
 .section .slide.second-page {
   background-image: url('../images/background02.png');
   background-size: cover;
+  background-position-y: -35px;
 }
 .section .slide.third-page .intro {
   background-image: url('../images/background03.png');
@@ -7549,11 +7550,15 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   background-image: url('../images/background04.png');
   background-size: cover;
 }
+.section .fp-tableCell {
+  height: 100%;
+  display: block;
+}
 .section .slide.first-page .intro {
-  height: 79%;
+  height: 76%;
   padding: 0px;
   margin: 0px;
-  margin-top: -20px;
+  overflow: hidden;
 }
 .section .slide.first-page .intro .header {
   width: 100%;
@@ -7561,8 +7566,8 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   color: white;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 2%;
-  padding-top: 55px;
+  padding-top: 33px;
+  padding-bottom: 53px;
 }
 .section .slide.first-page .intro .header .menu-logo {
   text-align: center;
@@ -7590,14 +7595,14 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   font-size: 60pt;
   text-align: center;
   padding-top: 10px;
-  padding-bottom: 35px;
   font-weight: bold;
-  margin-top: 40px;
+  margin-top: 0px;
+  padding-bottom: 20px;
 }
 .section .slide.first-page .intro .text-container {
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
-  padding-left: 15%;
+  padding-left: 35%;
 }
 .section .slide.first-page .intro .text-container .page-subtitle {
   font-family: demibold;
@@ -7606,7 +7611,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   margin: 0 auto;
   text-align: left;
   font-weight: bold;
-  margin-top: 5%;
+  margin-top: 15px;
 }
 .section .slide.first-page .intro .text-container .description {
   font-family: extralight;
@@ -7615,7 +7620,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   font-size: 16pt;
   font-weight: bold;
   letter-spacing: 0.4px;
-  margin-top: 3%;
+  margin-top: 10px;
 }
 .section .slide.first-page .intro .text-container .properties {
   font-family: extralight;
@@ -7623,7 +7628,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   margin: 0 auto;
   font-size: 16pt;
   font-weight: bold;
-  margin-top: 3%;
+  margin-top: 10px;
 }
 .section .slide.first-page .intro .text-container .properties div {
   display: inline-block;
@@ -7637,7 +7642,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   margin-top: 10px;
 }
 .section .slide.first-page .footer {
-  height: 23%;
+  height: 24%;
   padding: 0px;
   margin: 0px;
 }
@@ -7671,10 +7676,9 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   font-family: demibold;
   font-size: 60pt;
   text-align: center;
-  padding-bottom: 10px;
   font-weight: bold;
   color: white;
-  padding-top: 1%;
+  margin-top: 20px;
 }
 .section .slide.first-page .footer .arrow-box h1 a {
   color: white;
@@ -7685,6 +7689,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   font-size: 17pt;
   text-align: center;
   font-weight: bold;
+  padding-bottom: 10px;
 }
 .section .slide.first-page .footer .arrow-box h3 a {
   display: inline-block;
@@ -7695,16 +7700,15 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   margin-right: 0px;
 }
 .section .slide.second-page .intro {
-  height: 79%;
+  height: 76%;
   padding: 0px;
   margin: 0px;
-  margin-top: -20px;
+  overflow: hidden;
 }
 .section .slide.second-page .intro .header {
   width: 100%;
   color: white;
-  padding: 2%;
-  padding-top: 55px;
+  margin-top: 25px;
 }
 .section .slide.second-page .intro .header .menu-logo {
   text-align: center;
@@ -7737,9 +7741,10 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   margin-top: 40px;
 }
 .section .slide.second-page .intro .text-container {
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
-  padding-left: 15%;
+  padding-left: 40%;
+  margin-top: 25px;
 }
 .section .slide.second-page .intro .text-container .page-subtitle {
   font-family: demibold;
@@ -7748,7 +7753,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   margin: 0 auto;
   text-align: left;
   font-weight: bold;
-  margin-top: 5%;
+  margin-top: 10px;
 }
 .section .slide.second-page .intro .text-container .description {
   font-family: extralight;
@@ -7757,14 +7762,14 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   font-size: 16pt;
   font-weight: bold;
   letter-spacing: 0.4px;
-  margin-top: 33%;
+  margin-top: 165px;
 }
 .section .slide.second-page .intro .text-container .description .triangle-container {
   background-image: url(../images/box-second-page.png);
   background-repeat: no-repeat;
   padding-right: 10px;
   background-size: cover;
-  width: 65%;
+  width: 46%;
   padding: 25px 0px;
 }
 .section .slide.second-page .intro .text-container .description .triangle-container ul {
@@ -7780,7 +7785,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   margin-top: 0px;
 }
 .section .slide.second-page .intro .text-container .description .last-updates {
-  margin-left: 29%;
+  margin-left: 17%;
   margin-top: 20px;
 }
 .section .slide.second-page .intro .text-container .description .last-updates p {
@@ -7812,12 +7817,13 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   position: absolute;
   margin-left: 6%;
   width: 4%;
-  margin-top: -3.3%;
+  margin-top: -280px;
 }
 .section .slide.second-page .footer {
-  height: 23%;
+  height: 24%;
   padding: 0px;
   margin: 0px;
+  margin-top: -20px;
 }
 .section .slide.second-page .footer .left,
 .section .slide.second-page .footer .right {
@@ -7859,7 +7865,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   margin-top: 0px;
   background-size: cover;
   padding-top: 18px;
-  padding-bottom: 28px;
+  padding-top: 10px;
 }
 .section .slide.second-page .footer .left .first .block-text,
 .section .slide.second-page .footer .right .first .block-text,
@@ -7868,9 +7874,9 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   font-family: extralight;
   font-size: 14pt;
   font-weight: bold;
-  padding: 5px 15px;
+  padding: 2px 15px;
   text-align: center;
-  height: 40%;
+  height: 45%;
   background-color: rgba(252, 251, 252, 0.8);
   margin: 10px 15px;
 }
@@ -7888,7 +7894,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   font-weight: bold;
   font-size: 16pt;
   height: 100%;
-  padding: 10px;
+  padding: 0px;
   text-align: center;
   background-color: rgba(252, 251, 252, 0.8);
 }
