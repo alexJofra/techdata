@@ -153,10 +153,6 @@ body {
   z-index: 1610;
 }
 .footer {
-  margin-top: 45px;
-  padding-top: 35px;
-  padding-bottom: 36px;
-  border-top: 1px solid #E5E5E5;
 }
 
 // Element invisible fix
@@ -837,11 +833,8 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
 #navbar-administration.navbar-oriented .navbar-tray-vertical {
   width: 24rem;
 }
-#menu{
-  position: absolute;
-}
 
-.section .slide.first-page, .section .slide.second-page, .section .slide.third-page, .section .slide.fifth-page
+.section .full-page-slide.first-page, .section .full-page-slide.second-page, .section .full-page-slide.third-page, .section .full-page-slide.fifth-page
 {
   background-color: #818588;
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1, startColorstr=#818588, endColorstr=#CDCDCD);
@@ -852,24 +845,24 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   background-image: -o-linear-gradient(right, #818588 0%, #CDCDCD 100%);
   background-image: -webkit-gradient(linear, right bottom, left bottom, color-stop(0%, #818588), color-stop(100%, #CDCDCD));
 }
-.section .slide.first-page .intro
+.section .full-page-slide.first-page .intro
 {
   background-image: url('../images/background01.png');
   background-size: cover;
 }
 
-.section .slide.second-page
+.section .full-page-slide.second-page
 {
   background-image: url('../images/background02.png');
   background-size: cover;
   background-position-y: -35px;
 }
-.section .slide.third-page .intro
+.section .full-page-slide.third-page .intro
 {
   background-image: url('../images/background03.png');
   background-size: cover;
 }
-.section .slide.fourth-page
+.section .full-page-slide.fourth-page
 {
   background-image: url('../images/background04.png');
   background-size: cover;
@@ -878,8 +871,50 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   height: 100%;
   display: block;
 }
+.menuc{
+  display: none;
+  width:100%;
+  height: 100%;
+  z-index:2;
+  position: absolute;
+  top: 6%;
+}
+.menuc{
+  cursor: pointer;
+}
+#menu{
+  cursor: initial;
+  z-index: 3;
+  background-image: url(../images/menu-box.png);
+  width: 31%;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  list-style: none;
+  padding: 0px;
+  padding-top: 30px;
+  li{
+    font-size: 2.4vh;
+    font-family: light;
+    font-weight:bold;
+    margin-bottom:1%;
+    a{
+      color: white;
+    }
+  }
+}
+#fullpage{
+  z-index: 1;
+}
+.menu:hover{
+  cursor: pointer;
+}
 .section{
-  .slide.first-page{
+  .full-page-slide.first-page{
     .intro {
       height: 76%;
       padding: 0px;
@@ -893,6 +928,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
         background-size: cover;
         padding-top: 33px;
         padding-bottom: 53px;
+        background-position-y: -65px;
         .menu-logo {
           text-align: center;
           padding-top: 0px;
@@ -904,7 +940,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
               margin-left: 10px;
               color: white;
               font-family: demibold;
-              font-size: 14pt;
+              font-size: 1.8vh;
             }
           }
           .logo {
@@ -917,7 +953,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
       }
       .page-title {
         font-family: demibold;
-        font-size: 60pt;
+        font-size: 8vh;
         text-align: center;
         padding-top: 10px;
         font-weight: bold;
@@ -930,7 +966,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
         padding-left: 35%;
         .page-subtitle {
           font-family: demibold;
-          font-size: 30pt;
+          font-size: 4vh;
           color: black;
           margin: 0 auto;
           text-align: left;
@@ -941,7 +977,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
           font-family: extralight;
           text-align: left;
           margin: 0 auto;
-          font-size: 16pt;
+          font-size: 2.1vh;
           font-weight: bold;
           letter-spacing: 0.4px;
           margin-top: 10px;
@@ -950,7 +986,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
           font-family: extralight;
           text-align: left;
           margin: 0 auto;
-          font-size: 16pt;
+          font-size: 2.1vh;
           font-weight: bold;
           margin-top: 10px;
           div {
@@ -967,6 +1003,15 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
         }
       }
     }
+    .page-subtitle {
+      font-family: demibold;
+      font-size: 2.4vh;
+      color: black;
+      font-weight: bold;
+      text-align: center;
+      z-index: 2;
+      margin-top: 4%;
+    }
     .footer {
       height: 24%;
       padding: 0px;
@@ -979,34 +1024,30 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
       }
       .left {
         .arrow-box {
-          border-right: 6px solid #BBBCBC;
+          background-image: url(../images/box-left-first-page.png);
         }
       }
       .right {
         .arrow-box {
-          border-left: 6px solid #BBBCBC;
+          background-image: url(../images/box-right-first-page.png);
 
         }
       }
       .arrow-box {
         background-color: #818588;
-        filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1, startColorstr=#818588, endColorstr=#CDCDCD);
-        background-image: -moz-linear-gradient(right, #818588 0%, #CDCDCD 100%);
-        background-image: -webkit-linear-gradient(right, #818588 0%, #CDCDCD 100%);
-        background-image: -ms-linear-gradient(right, #818588 0%, #CDCDCD 100%);
-        background-image: linear-gradient(right, #818588 0%, #CDCDCD 100%);
-        background-image: -o-linear-gradient(right, #818588 0%, #CDCDCD 100%);
-        background-image: -webkit-gradient(linear, right bottom, left bottom, color-stop(0%, #818588), color-stop(100%, #CDCDCD));
-        border: 12px solid #BBBCBC;
         width: 100%;
         height: 100%;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        margin-top: -3%;
         h1 {
           font-family: demibold;
-          font-size: 60pt;
+          font-size: 8vh;
           text-align: center;
           font-weight: bold;
           color: white;
           margin-top: 20px;
+          padding-top: 6%;
           a {
             color: white;
           }
@@ -1014,7 +1055,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
         h3 {
           color: white;
           font-family: demibold;
-          font-size: 17pt;
+          font-size: 2.3vh;
           text-align: center;
           font-weight: bold;
           padding-bottom: 10px;
@@ -1030,7 +1071,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
       }
     }
   }
-  .slide.second-page{
+  .full-page-slide.second-page{
     .intro {
       height: 76%;
       padding: 0px;
@@ -1051,7 +1092,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
               margin-left: 10px;
               color: white;
               font-family: demibold;
-              font-size: 14pt;
+              font-size: 1.8vh;
             }
           }
           .logo {
@@ -1064,7 +1105,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
       }
       .page-title {
         font-family: demibold;
-        font-size: 60pt;
+        font-size: 8vh;
         text-align: center;
         padding-top: 10px;
         padding-bottom: 35px;
@@ -1078,7 +1119,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
         margin-top: 25px;
         .page-subtitle {
           font-family: demibold;
-          font-size: 30pt;
+          font-size: 4vh;
           color: black;
           margin: 0 auto;
           text-align: left;
@@ -1089,17 +1130,17 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
           font-family: extralight;
           text-align: left;
           margin: 0 auto;
-          font-size: 16pt;
+          font-size: 2.1vh;
           font-weight: bold;
           letter-spacing: 0.4px;
-          margin-top: 165px;
+          margin-top: 20%;
           .triangle-container{
             background-image: url(../images/box-second-page.png);
             background-repeat: no-repeat;
-            padding-right: 10px;
-            background-size: cover;
-            width: 46%;
+            width: 50%;
             padding: 25px 0px;
+            background-size: 100%;
+            max-width: 435px;
             ul{
               list-style: none;
               li{
@@ -1128,7 +1169,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
           font-family: extralight;
           text-align: left;
           margin: 0 auto;
-          font-size: 16pt;
+          font-size: 2.1vh;
           font-weight: bold;
           margin-top: 3%;
           div {
@@ -1155,7 +1196,6 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
       height: 24%;
       padding: 0px;
       margin: 0px;
-      margin-top: -20px;
       .left, .right {
         margin: 0px;
         width: 50%;
@@ -1178,22 +1218,24 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
           .block-title{
             text-align: center;
             font-family: demibold;
-            font-size: 20pt;
+            font-size: 2.6vh;
             color: white;
             margin-top: 0px;
-            background-size: cover;
-            padding-top: 18px;
             padding-top: 10px;
+            background-repeat: no-repeat;
+            background-size: 100%;
+            padding-bottom: 8%;
           }
           .block-text{
             font-family: extralight;
-            font-size: 14pt;
-            font-weight:bold;
+            font-size: 1.8vh;
+            font-weight: bold;
             padding: 2px 15px;
             text-align: center;
             height: 45%;
-            background-color: rgba(252,251,252,0.8);
+            background-color: rgba(252, 251, 252, 0.8);
             margin: 10px 15px;
+            margin-top: -12px;
             p{
               padding: 5px;
             }
@@ -1201,11 +1243,12 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
           .block-footer{
             font-family: extralight;
             font-weight: bold;
-            font-size: 16pt;
+            font-size: 2.1vh;
             height: 100%;
             padding: 0px;
             text-align: center;
             background-color: rgba(252,251,252,0.8);
+            padding-top: 5px;
             img{
               vertical-align: baseline;
               margin-left: 15px;
@@ -1227,7 +1270,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
       .left {
         .first{
           background-image: url(../images/box-left.png);
-          background-position-y: -90px;
+          background-position-y: -70px;
           border-right: 5px solid white;
         }
         .second{
@@ -1247,7 +1290,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
       }
     }
   }
-  .slide.third-page{
+  .full-page-slide.third-page{
     .intro {
       height: 66%;
       padding: 0px;
@@ -1276,7 +1319,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
               margin-left: 10px;
               color: white;
               font-family: demibold;
-              font-size: 14pt;
+              font-size: 1.8vh;
             }
           }
           .logo {
@@ -1298,7 +1341,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
       }
       .page-subtitle {
         font-family: demibold;
-        font-size: 18pt;
+        font-size: 2.4vh;
         color: black;
         font-weight: bold;
         text-align: center;
@@ -1310,7 +1353,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
         color: black;
         font-family: extralight;
         font-weight: bold;
-        font-size: 16pt;
+        font-size: 2.1vh;
         margin-top: -40px;
       }
       .highlighted-content{
@@ -1318,30 +1361,31 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
         margin-top: 15px;
         background-image: url(../images/box-third-page.png);
         background-size: cover;
-        padding-top: 40px;
-        padding-bottom: 50px;
+        padding-top: 25px;
+        padding-bottom: 40px;
         margin-left: 3%;
         margin-right: 3%;
+        background-position-y: -25px;
+        background-repeat: no-repeat;
         div{
           display: inline-block;
           width: 18%;
           vertical-align: top;
           border-right: 1px solid black;
-          height: 135px;
           &:last-child{
             border-right: none;
           }
           h3{
             font-family: extralight;
             font-weight: bold;
-            font-size: 16pt;
+            font-size: 2.1vh;
             color: black;
             margin-top: -10px;
             margin-bottom: 50px;
             p{
               font-family: extralight;
               font-weight:bold;
-              font-style: 14pt;
+              font-size: 1.8vh;
               color: black;
               margin-top: 0px;
             }
@@ -1349,7 +1393,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
         }
       }
       .content-quote{
-        margin-top: 15px;
+        margin-top: 0;
       }
     }
     .footer {
@@ -1365,21 +1409,22 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
         background-size: 110%;
         background-position:bottom left;
         .block-title{
-          text-align: center;
-          font-family: demibold;
-          font-size: 20pt;
-          color: white;
-          margin-top: 0px;
-          background-size: cover;
-          padding-top: 20px;
-          padding-bottom: 38px;
+          font-size: 3vh;
           background-position-y: -18px;
           background-image: url(../images/box-header-left.png);
           background-repeat: no-repeat;
+          text-align: center;
+          font-family: demibold;
+          color: white;
+          margin-top: 0px;
+          padding-top: 10px;
+          background-repeat: no-repeat;
+          background-size: 100%;
+          padding-bottom: 8%;
         }
         .block-text{
           font-family: extralight;
-          font-size: 14pt;
+          font-size: 1.8vh;
           font-weight: bold;
           padding: 3px 5px;
           text-align: center;
@@ -1393,7 +1438,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
         .block-footer{
           font-family: extralight;
           font-weight: bold;
-          font-size: 16pt;
+          font-size: 2.1vh;
           height: 100%;
           padding: 10px;
           text-align: center;
@@ -1426,6 +1471,210 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
       }
     }
   }
+  .full-page-slide.fourth-page{
+    .intro {
+      height: 58%;
+      padding: 0px;
+      margin: 0px;
+      margin-top: -20px;
+      .header {
+        width: 100%;
+        color: white;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 2%;
+        padding-top: 55px;
+        padding-bottom: 0px;
+        .content-page {
+          margin-top: 15px;
+        }
+        .menu-logo {
+          text-align: center;
+          padding-top: 0px;
+          margin-top: -30px;
+          .menu {
+            display: inline-block;
+            a {
+              vertical-align: middle;
+              margin-left: 10px;
+              color: white;
+              font-family: demibold;
+              font-size: 1.8vh;
+            }
+          }
+          .logo {
+            display: inline-block;
+            margin-right: 15px;
+            border-right: 3px solid white;
+            padding-right: 15px;
+          }
+        }
+      }
+      .page-title {
+        font-family: demibold;
+        font-size: 8vh;
+        text-align: center;
+        font-weight: bold;
+        z-index: 1;
+        color: white;
+        margin-top: 1%;
+      }
+      .page-subtitle {
+        font-family: demibold;
+        font-size: 3.9vh;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 4%;
+      }
+      .description{
+        font-family: extralight;
+        font-size: 2.4vh;
+        color: black;
+        font-weight: bold;
+        text-align: center;
+        z-index: 2;
+        margin-top: 2%;
+      }
+      .content-quote{
+        font-family:demibold;
+        font-size: 2.45vh;
+        color: black;
+        font-weight:bold;
+        text-align: center;
+        margin-top: 4%;
+      }
+    }
+    .footer {
+      height: 45%;
+      .carousel-inner {
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7fbcc1+0,618c9c+50,618c9c+51,7fbcc1+100 */
+        background: #7fbcc1; /* Old browsers */
+        background: -moz-linear-gradient(left, #7fbcc1 0%, #618c9c 50%, #618c9c 51%, #7fbcc1 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(left, #7fbcc1 0%, #618c9c 50%, #618c9c 51%, #7fbcc1 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to right, #7fbcc1 0%, #618c9c 50%, #618c9c 51%, #7fbcc1 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7fbcc1', endColorstr='#7fbcc1', GradientType=1); /* IE6-9 */
+        .item.active {
+          .left, .right {
+            width: 50%;
+            display: inline-block;
+            height: 100%;
+            vertical-align: top;
+            float: left;
+            background-repeat: no-repeat;
+            background-size: 100%;
+            padding-bottom: 10%;
+            img{
+              display: block;
+              margin: 0 auto;
+            }
+            .block-content{
+              text-align: center;
+              margin-top: -1%;
+              h5{
+                font-size: 3vh;
+                font-family: demibold;
+                font-weight: bold;
+                color: black;
+                text-align: center;
+                margin-top: 1%;
+              }
+            }
+            .block-title {
+              font-size: 3.3vh;
+              background-position-y: -18px;
+              background-image: url(../images/box-header-fourth-page.png);
+              background-repeat: no-repeat;
+              text-align: center;
+              font-family: demibold;
+              color: black;
+              margin-top: 0px;
+              padding-top: 10px;
+              background-repeat: no-repeat;
+              background-size: 100%;
+              padding-bottom: 5%;
+            }
+            .inside-left, .inside-right {
+              width: 50%;
+              float: left;
+              display: inline-block;
+              height: 100%;
+              text-align: center;
+              .inside-title {
+                display: inline-block;
+                margin-left: 1%;
+              }
+              .inside-header {
+                margin-left: 1%;
+                text-align: inherit;
+              }
+            }
+            .inside-title {
+              text-align: center;
+              font-family: demibold;
+              font-weight: bold;
+              font-size: 2.4vh;
+              color: white;
+              &.multiple{
+                display: inline-block;
+                margin-left: 1%;
+              }
+            }
+            .inside-header{
+              font-size: 3.7vh;
+              font-family: demibold;
+              font-weight: bold;
+              color: black;
+              text-align: center;
+              margin-top:1%;
+            }
+            .inside-description-left,.inside-description-right{
+              width: 45%;
+              display: inline-block;
+              float: left;
+              color: white;
+              font-family: extralight;
+              font-size: 1.5vh;
+              margin: 1%;
+            }
+            .inside-description-left{
+              p {
+                float: right;
+              }
+            }
+            .inside-description-center{
+              color: white;
+              font-family: extralight;
+              font-size: 1.5vh;
+              text-align: center;
+              font-weight:bold;
+            }
+          }
+          .left {
+            background-image: url(../images/TD04-Inf-Izq.png);
+
+          }
+          .right {
+            background-image: url(../images/TD04-Inf-Der.png);
+          }
+        }
+      }
+    }
+  }
+}
+body{
+  .fp-controlArrow.fp-prev{
+    border: none;
+    background-image: url(../images/arrow-left.png);
+    background-size: 100%;
+    padding: 20px;
+  }
+  .fp-controlArrow.fp-next{
+    border: none;
+    background-image: url(../images/arrow-right.png);
+    background-size: 100%;
+    padding: 20px;
+  }
 }
 @font-face {
   font-family: demibold;
@@ -1435,4 +1684,9 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
 @font-face {
   font-family: extralight;
   src: url(../font/Oswald-ExtraLight.ttf);
+}
+
+@font-face {
+  font-family: light;
+  src: url(../font/Oswald-Light.ttf);
 }
