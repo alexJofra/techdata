@@ -7542,51 +7542,119 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   background-size: cover;
 }
 .section .slide.third-page .intro {
-  background-image: url('../images/background01.png');
+  background-image: url('../images/background03.png');
   background-size: cover;
 }
 .section .slide.fourth-page {
   background-image: url('../images/background04.png');
   background-size: cover;
 }
-.section .intro {
-  height: 77%;
+.section .slide.first-page .intro {
+  height: 79%;
   padding: 0px;
   margin: 0px;
   margin-top: -20px;
 }
-.section .intro .header {
+.section .slide.first-page .intro .header {
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-image: url(../images/title-background01.png);
   color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 2%;
+  padding-top: 55px;
 }
-.section .footer {
+.section .slide.first-page .intro .header .menu-logo {
+  text-align: center;
+  padding-top: 0px;
+  margin-top: -20px;
+}
+.section .slide.first-page .intro .header .menu-logo .menu {
+  display: inline-block;
+}
+.section .slide.first-page .intro .header .menu-logo .menu a {
+  vertical-align: middle;
+  margin-left: 10px;
+  color: white;
+  font-family: demibold;
+  font-size: 14pt;
+}
+.section .slide.first-page .intro .header .menu-logo .logo {
+  display: inline-block;
+  margin-right: 15px;
+  border-right: 3px solid white;
+  padding-right: 15px;
+}
+.section .slide.first-page .intro .page-title {
+  font-family: demibold;
+  font-size: 60pt;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 35px;
+  font-weight: bold;
+  margin-top: 40px;
+}
+.section .slide.first-page .intro .text-container {
+  width: 50%;
+  margin: 0 auto;
+  padding-left: 15%;
+}
+.section .slide.first-page .intro .text-container .page-subtitle {
+  font-family: demibold;
+  font-size: 30pt;
+  color: black;
+  margin: 0 auto;
+  text-align: left;
+  font-weight: bold;
+  margin-top: 5%;
+}
+.section .slide.first-page .intro .text-container .description {
+  font-family: extralight;
+  text-align: left;
+  margin: 0 auto;
+  font-size: 16pt;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+  margin-top: 3%;
+}
+.section .slide.first-page .intro .text-container .properties {
+  font-family: extralight;
+  text-align: left;
+  margin: 0 auto;
+  font-size: 16pt;
+  font-weight: bold;
+  margin-top: 3%;
+}
+.section .slide.first-page .intro .text-container .properties div {
+  display: inline-block;
+  text-align: center;
+  margin-right: 11%;
+}
+.section .slide.first-page .intro .text-container .properties div:last-child {
+  margin-right: 0px;
+}
+.section .slide.first-page .intro .text-container .properties div img {
+  margin-top: 10px;
+}
+.section .slide.first-page .footer {
   height: 23%;
   padding: 0px;
   margin: 0px;
 }
-.section .footer .left,
-.section .footer .right {
+.section .slide.first-page .footer .left,
+.section .slide.first-page .footer .right {
   margin: 0px;
   width: 50%;
   height: 100%;
   float: left;
 }
-.section .footer .left .arrow-box {
-  background-color: #818588;
-  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1, startColorstr=#818588, endColorstr=#cdcdcd);
-  background-image: -moz-linear-gradient(right, #818588 0%, #cdcdcd 100%);
-  background-image: -webkit-linear-gradient(right, #818588 0%, #cdcdcd 100%);
-  background-image: -ms-linear-gradient(right, #818588 0%, #cdcdcd 100%);
-  background-image: linear-gradient(right, #818588 0%, #cdcdcd 100%);
-  background-image: -o-linear-gradient(right, #818588 0%, #cdcdcd 100%);
-  background-image: -webkit-gradient(linear, right bottom, left bottom, color-stop(0%, #818588), color-stop(100%, #cdcdcd));
-  width: 100%;
-  height: 100%;
-  border: 12px solid #BBBCBC;
+.section .slide.first-page .footer .left .arrow-box {
   border-right: 6px solid #BBBCBC;
 }
-.section .footer .right .arrow-box {
+.section .slide.first-page .footer .right .arrow-box {
+  border-left: 6px solid #BBBCBC;
+}
+.section .slide.first-page .footer .arrow-box {
   background-color: #818588;
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1, startColorstr=#818588, endColorstr=#cdcdcd);
   background-image: -moz-linear-gradient(right, #818588 0%, #cdcdcd 100%);
@@ -7596,7 +7664,461 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   background-image: -o-linear-gradient(right, #818588 0%, #cdcdcd 100%);
   background-image: -webkit-gradient(linear, right bottom, left bottom, color-stop(0%, #818588), color-stop(100%, #cdcdcd));
   border: 12px solid #BBBCBC;
-  border-left: 6px solid #BBBCBC;
   width: 100%;
   height: 100%;
+}
+.section .slide.first-page .footer .arrow-box h1 {
+  font-family: demibold;
+  font-size: 60pt;
+  text-align: center;
+  padding-bottom: 10px;
+  font-weight: bold;
+  color: white;
+  padding-top: 1%;
+}
+.section .slide.first-page .footer .arrow-box h1 a {
+  color: white;
+}
+.section .slide.first-page .footer .arrow-box h3 {
+  color: white;
+  font-family: demibold;
+  font-size: 17pt;
+  text-align: center;
+  font-weight: bold;
+}
+.section .slide.first-page .footer .arrow-box h3 a {
+  display: inline-block;
+  color: white;
+  margin-right: 2%;
+}
+.section .slide.first-page .footer .arrow-box h3 a:last-child {
+  margin-right: 0px;
+}
+.section .slide.second-page .intro {
+  height: 79%;
+  padding: 0px;
+  margin: 0px;
+  margin-top: -20px;
+}
+.section .slide.second-page .intro .header {
+  width: 100%;
+  color: white;
+  padding: 2%;
+  padding-top: 55px;
+}
+.section .slide.second-page .intro .header .menu-logo {
+  text-align: center;
+  padding-top: 0px;
+  margin-top: -20px;
+}
+.section .slide.second-page .intro .header .menu-logo .menu {
+  display: inline-block;
+}
+.section .slide.second-page .intro .header .menu-logo .menu a {
+  vertical-align: middle;
+  margin-left: 10px;
+  color: white;
+  font-family: demibold;
+  font-size: 14pt;
+}
+.section .slide.second-page .intro .header .menu-logo .logo {
+  display: inline-block;
+  margin-right: 15px;
+  border-right: 3px solid white;
+  padding-right: 15px;
+}
+.section .slide.second-page .intro .page-title {
+  font-family: demibold;
+  font-size: 60pt;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 35px;
+  font-weight: bold;
+  margin-top: 40px;
+}
+.section .slide.second-page .intro .text-container {
+  width: 50%;
+  margin: 0 auto;
+  padding-left: 15%;
+}
+.section .slide.second-page .intro .text-container .page-subtitle {
+  font-family: demibold;
+  font-size: 30pt;
+  color: black;
+  margin: 0 auto;
+  text-align: left;
+  font-weight: bold;
+  margin-top: 5%;
+}
+.section .slide.second-page .intro .text-container .description {
+  font-family: extralight;
+  text-align: left;
+  margin: 0 auto;
+  font-size: 16pt;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+  margin-top: 33%;
+}
+.section .slide.second-page .intro .text-container .description .triangle-container {
+  background-image: url(../images/box-second-page.png);
+  background-repeat: no-repeat;
+  padding-right: 10px;
+  background-size: cover;
+  width: 65%;
+  padding: 25px 0px;
+}
+.section .slide.second-page .intro .text-container .description .triangle-container ul {
+  list-style: none;
+}
+.section .slide.second-page .intro .text-container .description .triangle-container ul li {
+  margin-top: 15px;
+}
+.section .slide.second-page .intro .text-container .description .triangle-container ul li ul {
+  list-style: none;
+}
+.section .slide.second-page .intro .text-container .description .triangle-container ul li ul li {
+  margin-top: 0px;
+}
+.section .slide.second-page .intro .text-container .description .last-updates {
+  margin-left: 29%;
+  margin-top: 20px;
+}
+.section .slide.second-page .intro .text-container .description .last-updates p {
+  border: 1px solid black;
+  width: auto;
+  display: inline;
+  padding: 2px 10px;
+}
+.section .slide.second-page .intro .text-container .properties {
+  font-family: extralight;
+  text-align: left;
+  margin: 0 auto;
+  font-size: 16pt;
+  font-weight: bold;
+  margin-top: 3%;
+}
+.section .slide.second-page .intro .text-container .properties div {
+  display: inline-block;
+  text-align: center;
+  margin-right: 11%;
+}
+.section .slide.second-page .intro .text-container .properties div:last-child {
+  margin-right: 0px;
+}
+.section .slide.second-page .intro .text-container .properties div img {
+  margin-top: 10px;
+}
+.section .slide.second-page .intro .text-container .figure {
+  position: absolute;
+  margin-left: 6%;
+  width: 4%;
+  margin-top: -3.3%;
+}
+.section .slide.second-page .footer {
+  height: 23%;
+  padding: 0px;
+  margin: 0px;
+}
+.section .slide.second-page .footer .left,
+.section .slide.second-page .footer .right {
+  margin: 0px;
+  width: 50%;
+  height: 100%;
+  float: left;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b2b1b6+0,edebf0+49,edebf0+51,b2b1b6+100 */
+  background: #b2b1b6;
+  /* Old browsers */
+  background: -moz-linear-gradient(left, #b2b1b6 0%, #edebf0 49%, #edebf0 51%, #b2b1b6 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #b2b1b6 0%, #edebf0 49%, #edebf0 51%, #b2b1b6 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #b2b1b6 0%, #edebf0 49%, #edebf0 51%, #b2b1b6 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b2b1b6', endColorstr='#b2b1b6', GradientType=1);
+  /* IE6-9 */
+}
+.section .slide.second-page .footer .left .first,
+.section .slide.second-page .footer .right .first,
+.section .slide.second-page .footer .left .second,
+.section .slide.second-page .footer .right .second {
+  width: 50%;
+  margin: 0px;
+  height: 100%;
+  display: inline-block;
+  float: left;
+  background-size: cover;
+}
+.section .slide.second-page .footer .left .first .block-title,
+.section .slide.second-page .footer .right .first .block-title,
+.section .slide.second-page .footer .left .second .block-title,
+.section .slide.second-page .footer .right .second .block-title {
+  text-align: center;
+  font-family: demibold;
+  font-size: 20pt;
+  color: white;
+  margin-top: 0px;
+  background-size: cover;
+  padding-top: 18px;
+  padding-bottom: 28px;
+}
+.section .slide.second-page .footer .left .first .block-text,
+.section .slide.second-page .footer .right .first .block-text,
+.section .slide.second-page .footer .left .second .block-text,
+.section .slide.second-page .footer .right .second .block-text {
+  font-family: extralight;
+  font-size: 14pt;
+  font-weight: bold;
+  padding: 5px 15px;
+  text-align: center;
+  height: 40%;
+  background-color: rgba(252, 251, 252, 0.8);
+  margin: 10px 15px;
+}
+.section .slide.second-page .footer .left .first .block-text p,
+.section .slide.second-page .footer .right .first .block-text p,
+.section .slide.second-page .footer .left .second .block-text p,
+.section .slide.second-page .footer .right .second .block-text p {
+  padding: 5px;
+}
+.section .slide.second-page .footer .left .first .block-footer,
+.section .slide.second-page .footer .right .first .block-footer,
+.section .slide.second-page .footer .left .second .block-footer,
+.section .slide.second-page .footer .right .second .block-footer {
+  font-family: extralight;
+  font-weight: bold;
+  font-size: 16pt;
+  height: 100%;
+  padding: 10px;
+  text-align: center;
+  background-color: rgba(252, 251, 252, 0.8);
+}
+.section .slide.second-page .footer .left .first .block-footer img,
+.section .slide.second-page .footer .right .first .block-footer img,
+.section .slide.second-page .footer .left .second .block-footer img,
+.section .slide.second-page .footer .right .second .block-footer img {
+  vertical-align: baseline;
+  margin-left: 15px;
+}
+.section .slide.second-page .footer .left .first .block-title,
+.section .slide.second-page .footer .right .first .block-title {
+  background-image: url(../images/box-header-left.png);
+  opacity: 0.7;
+}
+.section .slide.second-page .footer .left .second .block-title,
+.section .slide.second-page .footer .right .second .block-title {
+  background-image: url(../images/box-header-left.png);
+}
+.section .slide.second-page .footer .left .first {
+  background-image: url(../images/box-left.png);
+  background-position-y: -90px;
+  border-right: 5px solid white;
+}
+.section .slide.second-page .footer .left .second {
+  background-image: url(../images/box-lleft.png);
+  border-right: 5px solid white;
+}
+.section .slide.second-page .footer .right .first {
+  background-image: url(../images/box-rright.png);
+  border-right: 2.5px solid white;
+}
+.section .slide.second-page .footer .right .second {
+  background-image: url(../images/box-right.png);
+  border-left: 2.5px solid white;
+}
+.section .slide.third-page .intro {
+  height: 66%;
+  padding: 0px;
+  margin: 0px;
+  margin-top: -20px;
+}
+.section .slide.third-page .intro .header {
+  width: 100%;
+  color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 2%;
+  padding-top: 55px;
+  height: 95%;
+  padding-bottom: 0px;
+}
+.section .slide.third-page .intro .header .content-page {
+  margin-top: 15px;
+}
+.section .slide.third-page .intro .header .menu-logo {
+  text-align: center;
+  padding-top: 0px;
+  margin-top: -30px;
+}
+.section .slide.third-page .intro .header .menu-logo .menu {
+  display: inline-block;
+}
+.section .slide.third-page .intro .header .menu-logo .menu a {
+  vertical-align: middle;
+  margin-left: 10px;
+  color: white;
+  font-family: demibold;
+  font-size: 14pt;
+}
+.section .slide.third-page .intro .header .menu-logo .logo {
+  display: inline-block;
+  margin-right: 15px;
+  border-right: 3px solid white;
+  padding-right: 15px;
+}
+.section .slide.third-page .intro .page-title {
+  font-family: demibold;
+  font-size: 100pt;
+  text-align: center;
+  padding-bottom: 35px;
+  font-weight: bold;
+  margin-top: -30px;
+  z-index: 1;
+}
+.section .slide.third-page .intro .page-subtitle {
+  font-family: demibold;
+  font-size: 18pt;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  z-index: 2;
+  margin-top: 0px;
+}
+.section .slide.third-page .intro p {
+  text-align: center;
+  color: black;
+  font-family: extralight;
+  font-weight: bold;
+  font-size: 16pt;
+  margin-top: -40px;
+}
+.section .slide.third-page .intro .highlighted-content {
+  text-align: center;
+  margin-top: 15px;
+  background-image: url(../images/box-third-page.png);
+  background-size: cover;
+  padding-top: 40px;
+  padding-bottom: 50px;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+.section .slide.third-page .intro .highlighted-content div {
+  display: inline-block;
+  width: 18%;
+  vertical-align: top;
+  border-right: 1px solid black;
+  height: 135px;
+}
+.section .slide.third-page .intro .highlighted-content div:last-child {
+  border-right: none;
+}
+.section .slide.third-page .intro .highlighted-content div h3 {
+  font-family: extralight;
+  font-weight: bold;
+  font-size: 16pt;
+  color: black;
+  margin-top: -10px;
+  margin-bottom: 50px;
+}
+.section .slide.third-page .intro .highlighted-content div h3 p {
+  font-family: extralight;
+  font-weight: bold;
+  font-style: 14pt;
+  color: black;
+  margin-top: 0px;
+}
+.section .slide.third-page .intro .content-quote {
+  margin-top: 15px;
+}
+.section .slide.third-page .footer {
+  height: 34%;
+  padding: 0px;
+  margin: 0px;
+}
+.section .slide.third-page .footer .left,
+.section .slide.third-page .footer .right,
+.section .slide.third-page .footer .center {
+  margin: 0px;
+  width: 33%;
+  height: 106%;
+  float: left;
+  background-repeat: no-repeat;
+  background-size: 110%;
+  background-position: bottom left;
+}
+.section .slide.third-page .footer .left .block-title,
+.section .slide.third-page .footer .right .block-title,
+.section .slide.third-page .footer .center .block-title {
+  text-align: center;
+  font-family: demibold;
+  font-size: 20pt;
+  color: white;
+  margin-top: 0px;
+  background-size: cover;
+  padding-top: 20px;
+  padding-bottom: 38px;
+  background-position-y: -18px;
+  background-image: url(../images/box-header-left.png);
+  background-repeat: no-repeat;
+}
+.section .slide.third-page .footer .left .block-text,
+.section .slide.third-page .footer .right .block-text,
+.section .slide.third-page .footer .center .block-text {
+  font-family: extralight;
+  font-size: 14pt;
+  font-weight: bold;
+  padding: 3px 5px;
+  text-align: center;
+  height: 57%;
+  background-color: rgba(252, 251, 252, 0.8);
+  margin: 10px 22%;
+}
+.section .slide.third-page .footer .left .block-text p,
+.section .slide.third-page .footer .right .block-text p,
+.section .slide.third-page .footer .center .block-text p {
+  padding: 5px;
+}
+.section .slide.third-page .footer .left .block-footer,
+.section .slide.third-page .footer .right .block-footer,
+.section .slide.third-page .footer .center .block-footer {
+  font-family: extralight;
+  font-weight: bold;
+  font-size: 16pt;
+  height: 100%;
+  padding: 10px;
+  text-align: center;
+  background-color: rgba(252, 251, 252, 0.8);
+}
+.section .slide.third-page .footer .left .block-footer img,
+.section .slide.third-page .footer .right .block-footer img,
+.section .slide.third-page .footer .center .block-footer img {
+  vertical-align: baseline;
+  margin-left: 15px;
+}
+.section .slide.third-page .footer .left {
+  border-right: 6.3px solid white;
+  background-image: url(../images/box-left-third-page.png);
+}
+.section .slide.third-page .footer .left .block-title {
+  opacity: 0.8;
+}
+.section .slide.third-page .footer .center {
+  border-left: 3.1px solid white;
+  border-right: 3.1px solid white;
+  background-image: url(../images/box-center-third-page.png);
+}
+.section .slide.third-page .footer .right {
+  width: 34%;
+  border-left: 6.3px solid white;
+  background-image: url(../images/box-right-third-page.png);
+}
+.section .slide.third-page .footer .right .block-title {
+  opacity: 0.8;
+}
+@font-face {
+  font-family: demibold;
+  src: url(../font/Oswald-DemiBold.ttf);
+}
+@font-face {
+  font-family: extralight;
+  src: url(../font/Oswald-ExtraLight.ttf);
 }

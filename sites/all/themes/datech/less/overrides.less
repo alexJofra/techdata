@@ -6,8 +6,8 @@
 // Drop shadows.
 .box-shadow(@shadow) {
   -webkit-box-shadow: @shadow;
-     -moz-box-shadow: @shadow;
-          box-shadow: @shadow;
+  -moz-box-shadow: @shadow;
+  box-shadow: @shadow;
 }
 
 html {
@@ -813,9 +813,9 @@ body.navbar-is-fixed-top.navbar-administration .navbar-fixed-top {
 }
 /* Small devices (tablets, 768px and up) */
 @media (min-width: @screen-sm-min) {
-body.navbar-is-fixed-top.navbar-administration.navbar-vertical.navbar-tray-open .navbar-fixed-top {
-  left: 240px;
-  left: 24rem;
+  body.navbar-is-fixed-top.navbar-administration.navbar-vertical.navbar-tray-open .navbar-fixed-top {
+    left: 240px;
+    left: 24rem;
   }
 }
 .navbar-administration #navbar-administration.navbar-oriented .navbar-bar{
@@ -857,6 +857,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   background-image: url('../images/background01.png');
   background-size: cover;
 }
+
 .section .slide.second-page
 {
   background-image: url('../images/background02.png');
@@ -864,7 +865,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
 }
 .section .slide.third-page .intro
 {
-  background-image: url('../images/background01.png');
+  background-image: url('../images/background03.png');
   background-size: cover;
 }
 .section .slide.fourth-page
@@ -873,46 +874,116 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   background-size: cover;
 }
 .section{
-  .intro {
-    height: 77%;
-    padding: 0px;
-    margin: 0px;
-    margin-top: -20px;
-    .header{
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
-      color: white;
-    }
-  }
-  .footer {
-    height: 23%;
-    padding: 0px;
-    margin: 0px;
-    .left, .right {
+  .slide.first-page{
+    .intro {
+      height: 79%;
+      padding: 0px;
       margin: 0px;
-      width: 50%;
-      height: 100%;
-      float: left;
-    }
-    .left{
-      .arrow-box{
-        background-color: #818588;
-        filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1, startColorstr=#818588, endColorstr=#CDCDCD);
-        background-image: -moz-linear-gradient(right, #818588 0%, #CDCDCD 100%);
-        background-image: -webkit-linear-gradient(right, #818588 0%, #CDCDCD 100%);
-        background-image: -ms-linear-gradient(right, #818588 0%, #CDCDCD 100%);
-        background-image: linear-gradient(right, #818588 0%, #CDCDCD 100%);
-        background-image: -o-linear-gradient(right, #818588 0%, #CDCDCD 100%);
-        background-image: -webkit-gradient(linear, right bottom, left bottom, color-stop(0%, #818588), color-stop(100%, #CDCDCD));
-        width:100%;
-        height: 100%;
-        border: 12px solid #BBBCBC;
-        border-right: 6px solid #BBBCBC;
-
+      margin-top: -20px;
+      .header {
+        width: 100%;
+        background-image: url(../images/title-background01.png);
+        color: white;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 2%;
+        padding-top: 55px;
+        .menu-logo {
+          text-align: center;
+          padding-top: 0px;
+          margin-top: -20px;
+          .menu {
+            display: inline-block;
+            a {
+              vertical-align: middle;
+              margin-left: 10px;
+              color: white;
+              font-family: demibold;
+              font-size: 14pt;
+            }
+          }
+          .logo {
+            display: inline-block;
+            margin-right: 15px;
+            border-right: 3px solid white;
+            padding-right: 15px;
+          }
+        }
+      }
+      .page-title {
+        font-family: demibold;
+        font-size: 60pt;
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 35px;
+        font-weight: bold;
+        margin-top: 40px;
+      }
+      .text-container {
+        width: 50%;
+        margin: 0 auto;
+        padding-left: 15%;
+        .page-subtitle {
+          font-family: demibold;
+          font-size: 30pt;
+          color: black;
+          margin: 0 auto;
+          text-align: left;
+          font-weight: bold;
+          margin-top: 5%;
+        }
+        .description {
+          font-family: extralight;
+          text-align: left;
+          margin: 0 auto;
+          font-size: 16pt;
+          font-weight: bold;
+          letter-spacing: 0.4px;
+          margin-top: 3%;
+        }
+        .properties {
+          font-family: extralight;
+          text-align: left;
+          margin: 0 auto;
+          font-size: 16pt;
+          font-weight: bold;
+          margin-top: 3%;
+          div {
+            display: inline-block;
+            text-align: center;
+            margin-right: 11%;
+            &:last-child {
+              margin-right: 0px;
+            }
+            img {
+              margin-top: 10px;
+            }
+          }
+        }
       }
     }
-    .right{
-      .arrow-box{
+    .footer {
+      height: 23%;
+      padding: 0px;
+      margin: 0px;
+      .left, .right {
+        margin: 0px;
+        width: 50%;
+        height: 100%;
+        float: left;
+      }
+      .left {
+        .arrow-box {
+          border-right: 6px solid #BBBCBC;
+        }
+      }
+      .right {
+        .arrow-box {
+          border-left: 6px solid #BBBCBC;
+
+        }
+      }
+      .arrow-box {
         background-color: #818588;
         filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1, startColorstr=#818588, endColorstr=#CDCDCD);
         background-image: -moz-linear-gradient(right, #818588 0%, #CDCDCD 100%);
@@ -922,12 +993,441 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
         background-image: -o-linear-gradient(right, #818588 0%, #CDCDCD 100%);
         background-image: -webkit-gradient(linear, right bottom, left bottom, color-stop(0%, #818588), color-stop(100%, #CDCDCD));
         border: 12px solid #BBBCBC;
-        border-left: 6px solid #BBBCBC;
-        width:100%;
+        width: 100%;
         height: 100%;
+        h1 {
+          font-family: demibold;
+          font-size: 60pt;
+          text-align: center;
+          padding-bottom: 10px;
+          font-weight: bold;
+          color: white;
+          padding-top: 1%;
+          a {
+            color: white;
+          }
+        }
+        h3 {
+          color: white;
+          font-family: demibold;
+          font-size: 17pt;
+          text-align: center;
+          font-weight: bold;
+          a {
+            display: inline-block;
+            color: white;
+            margin-right: 2%;
+            &:last-child {
+              margin-right: 0px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .slide.second-page{
+    .intro {
+      height: 79%;
+      padding: 0px;
+      margin: 0px;
+      margin-top: -20px;
+      .header {
+        width: 100%;
+        color: white;
+        padding: 2%;
+        padding-top: 55px;
+        padding-top: 55px;
+        .menu-logo {
+          text-align: center;
+          padding-top: 0px;
+          margin-top: -20px;
+          .menu {
+            display: inline-block;
+            a {
+              vertical-align: middle;
+              margin-left: 10px;
+              color: white;
+              font-family: demibold;
+              font-size: 14pt;
+            }
+          }
+          .logo {
+            display: inline-block;
+            margin-right: 15px;
+            border-right: 3px solid white;
+            padding-right: 15px;
+          }
+        }
+      }
+      .page-title {
+        font-family: demibold;
+        font-size: 60pt;
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 35px;
+        font-weight: bold;
+        margin-top: 40px;
+      }
+      .text-container {
+        width: 50%;
+        margin: 0 auto;
+        padding-left: 15%;
+        .page-subtitle {
+          font-family: demibold;
+          font-size: 30pt;
+          color: black;
+          margin: 0 auto;
+          text-align: left;
+          font-weight: bold;
+          margin-top: 5%;
+        }
+        .description {
+          font-family: extralight;
+          text-align: left;
+          margin: 0 auto;
+          font-size: 16pt;
+          font-weight: bold;
+          letter-spacing: 0.4px;
+          margin-top: 33%;
+          .triangle-container{
+            background-image: url(../images/box-second-page.png);
+            background-repeat: no-repeat;
+            padding-right: 10px;
+            background-size: cover;
+            width: 65%;
+            padding: 25px 0px;
+            ul{
+              list-style: none;
+              li{
+                margin-top: 15px;
+                ul{
+                  list-style: none;
+                  li{
+                    margin-top: 0px;
+                  }
+                }
+              }
+            }
+          }
+          .last-updates{
+            margin-left: 29%;
+            margin-top: 20px;
+            p{
+              border: 1px solid black;
+              width: auto;
+              display: inline;
+              padding: 2px 10px;
+            }
+          }
+        }
+        .properties {
+          font-family: extralight;
+          text-align: left;
+          margin: 0 auto;
+          font-size: 16pt;
+          font-weight: bold;
+          margin-top: 3%;
+          div {
+            display: inline-block;
+            text-align: center;
+            margin-right: 11%;
+            &:last-child {
+              margin-right: 0px;
+            }
+            img {
+              margin-top: 10px;
+            }
+          }
+        }
+        .figure{
+          position: absolute;
+          margin-left: 6%;
+          width: 4%;
+          margin-top: -3.3%;
+        }
+      }
+    }
+    .footer {
+      height: 23%;
+      padding: 0px;
+      margin: 0px;
+      .left, .right {
+        margin: 0px;
+        width: 50%;
+        height: 100%;
+        float: left;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b2b1b6+0,edebf0+49,edebf0+51,b2b1b6+100 */
+        background: #b2b1b6; /* Old browsers */
+        background: -moz-linear-gradient(left,  #b2b1b6 0%, #edebf0 49%, #edebf0 51%, #b2b1b6 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(left,  #b2b1b6 0%,#edebf0 49%,#edebf0 51%,#b2b1b6 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to right,  #b2b1b6 0%,#edebf0 49%,#edebf0 51%,#b2b1b6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2b1b6', endColorstr='#b2b1b6',GradientType=1 ); /* IE6-9 */
 
+        .first, .second{
+          width: 50%;
+          margin: 0px;
+          height: 100%;
+          display: inline-block;
+          float: left;
+          background-size: cover;
+          .block-title{
+            text-align: center;
+            font-family: demibold;
+            font-size: 20pt;
+            color: white;
+            margin-top: 0px;
+            background-size: cover;
+            padding-top: 18px;
+            padding-bottom: 28px;
+          }
+          .block-text{
+            font-family: extralight;
+            font-size: 14pt;
+            font-weight:bold;
+            padding: 5px 15px;
+            text-align: center;
+            height: 40%;
+            background-color: rgba(252,251,252,0.8);
+            margin: 10px 15px;
+            p{
+              padding: 5px;
+            }
+          }
+          .block-footer{
+            font-family: extralight;
+            font-weight: bold;
+            font-size: 16pt;
+            height: 100%;
+            padding: 10px;
+            text-align: center;
+            background-color: rgba(252,251,252,0.8);
+            img{
+              vertical-align: baseline;
+              margin-left: 15px;
+            }
+          }
+        }
+        .first{
+          .block-title {
+            background-image: url(../images/box-header-left.png);
+            opacity: 0.7;
+          }
+        }
+        .second{
+          .block-title {
+            background-image: url(../images/box-header-left.png);
+          }
+        }
+      }
+      .left {
+        .first{
+          background-image: url(../images/box-left.png);
+          background-position-y: -90px;
+          border-right: 5px solid white;
+        }
+        .second{
+          background-image: url(../images/box-lleft.png);
+          border-right: 5px solid white;
+        }
+      }
+      .right {
+        .first{
+          background-image: url(../images/box-rright.png);
+          border-right: 2.5px solid white;
+        }
+        .second{
+          background-image: url(../images/box-right.png);
+          border-left: 2.5px solid white;
+        }
+      }
+    }
+  }
+  .slide.third-page{
+    .intro {
+      height: 66%;
+      padding: 0px;
+      margin: 0px;
+      margin-top: -20px;
+      .header {
+        width: 100%;
+        color: white;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 2%;
+        padding-top: 55px;
+        height: 95%;
+        padding-bottom: 0px;
+        .content-page{
+          margin-top: 15px;
+        }
+        .menu-logo {
+          text-align: center;
+          padding-top: 0px;
+          margin-top: -30px;
+          .menu {
+            display: inline-block;
+            a {
+              vertical-align: middle;
+              margin-left: 10px;
+              color: white;
+              font-family: demibold;
+              font-size: 14pt;
+            }
+          }
+          .logo {
+            display: inline-block;
+            margin-right: 15px;
+            border-right: 3px solid white;
+            padding-right: 15px;
+          }
+        }
+      }
+      .page-title {
+        font-family: demibold;
+        font-size: 100pt;
+        text-align: center;
+        padding-bottom: 35px;
+        font-weight: bold;
+        margin-top: -30px;
+        z-index: 1;
+      }
+      .page-subtitle {
+        font-family: demibold;
+        font-size: 18pt;
+        color: black;
+        font-weight: bold;
+        text-align: center;
+        z-index: 2;
+        margin-top: 0px;
+      }
+      p{
+        text-align: center;
+        color: black;
+        font-family: extralight;
+        font-weight: bold;
+        font-size: 16pt;
+        margin-top: -40px;
+      }
+      .highlighted-content{
+        text-align: center;
+        margin-top: 15px;
+        background-image: url(../images/box-third-page.png);
+        background-size: cover;
+        padding-top: 40px;
+        padding-bottom: 50px;
+        margin-left: 3%;
+        margin-right: 3%;
+        div{
+          display: inline-block;
+          width: 18%;
+          vertical-align: top;
+          border-right: 1px solid black;
+          height: 135px;
+          &:last-child{
+            border-right: none;
+          }
+          h3{
+            font-family: extralight;
+            font-weight: bold;
+            font-size: 16pt;
+            color: black;
+            margin-top: -10px;
+            margin-bottom: 50px;
+            p{
+              font-family: extralight;
+              font-weight:bold;
+              font-style: 14pt;
+              color: black;
+              margin-top: 0px;
+            }
+          }
+        }
+      }
+      .content-quote{
+        margin-top: 15px;
+      }
+    }
+    .footer {
+      height: 34%;
+      padding: 0px;
+      margin: 0px;
+      .left, .right, .center {
+        margin: 0px;
+        width: 33%;
+        height: 106%;
+        float: left;
+        background-repeat: no-repeat;
+        background-size: 110%;
+        background-position:bottom left;
+        .block-title{
+          text-align: center;
+          font-family: demibold;
+          font-size: 20pt;
+          color: white;
+          margin-top: 0px;
+          background-size: cover;
+          padding-top: 20px;
+          padding-bottom: 38px;
+          background-position-y: -18px;
+          background-image: url(../images/box-header-left.png);
+          background-repeat: no-repeat;
+        }
+        .block-text{
+          font-family: extralight;
+          font-size: 14pt;
+          font-weight: bold;
+          padding: 3px 5px;
+          text-align: center;
+          height: 57%;
+          background-color: rgba(252, 251, 252, 0.8);
+          margin: 10px 22%;
+          p{
+            padding: 5px;
+          }
+        }
+        .block-footer{
+          font-family: extralight;
+          font-weight: bold;
+          font-size: 16pt;
+          height: 100%;
+          padding: 10px;
+          text-align: center;
+          background-color: rgba(252,251,252,0.8);
+          img{
+            vertical-align: baseline;
+            margin-left: 15px;
+          }
+        }
+      }
+      .left {
+        border-right: 6.3px solid white;
+        background-image: url(../images/box-left-third-page.png);
+        .block-title{
+          opacity: 0.8;
+        }
+      }
+      .center {
+        border-left: 3.1px solid white;
+        border-right: 3.1px solid white;
+        background-image: url(../images/box-center-third-page.png);
+      }
+      .right{
+        width: 34%;
+        border-left: 6.3px solid white;
+        background-image: url(../images/box-right-third-page.png);
+        .block-title{
+          opacity: 0.8;
+        }
       }
     }
   }
 }
+@font-face {
+  font-family: demibold;
+  src: url(../font/Oswald-DemiBold.ttf);
+}
 
+@font-face {
+  font-family: extralight;
+  src: url(../font/Oswald-ExtraLight.ttf);
+}
