@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="90be2c12-782a-45cc-b571-dc9de7be939e" name="Default" comment="">
+    <list default="true" id="90be2c12-782a-45cc-b571-dc9de7be939e" name="Default" comment="" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/datech/images/left-background.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/datech/images/right-background.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -482,12 +482,12 @@
       <option name="presentableId" value="Default" />
       <updated>1468229728364</updated>
       <workItem from="1468229729554" duration="16791000" />
-      <workItem from="1468916591082" duration="11513000" />
+      <workItem from="1468916591082" duration="11973000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28304000" />
+    <option name="totallyTimeSpent" value="28764000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
